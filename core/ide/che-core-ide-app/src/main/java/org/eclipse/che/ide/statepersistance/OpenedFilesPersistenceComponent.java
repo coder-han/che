@@ -59,9 +59,9 @@ public class OpenedFilesPersistenceComponent implements PersistenceComponent {
         final EditorAgent editorAgent = editorAgentProvider.get();
         final List<ActionDescriptor> actions = new ArrayList<>();
         final String openFileActionId = actionManager.getId(openFileAction);
-        final Map<String, EditorPartPresenter> openedEditors = editorAgent.getOpenedEditors();
+        final List<EditorPartPresenter> openedEditors = editorAgent.getOpenedEditors();
 
-        for (EditorPartPresenter editor : openedEditors.values()) {
+        for (EditorPartPresenter editor : openedEditors) {
             String openedFilePath = editor.getEditorInput().getFile().getPath();
 
             actions.add(dtoFactory.createDto(ActionDescriptor.class)

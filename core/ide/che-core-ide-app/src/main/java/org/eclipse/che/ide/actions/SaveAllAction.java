@@ -46,9 +46,7 @@ public class SaveAllAction extends ProjectAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         eventLogger.log(this);
-        Collection<EditorPartPresenter> values = editorAgent.getOpenedEditors().values();
-        List<EditorPartPresenter> editors = new ArrayList<>(values);
-        save(editors);
+        save(editorAgent.getOpenedEditors());
     }
 
     private void save(final List<EditorPartPresenter> editors) {
@@ -84,7 +82,7 @@ public class SaveAllAction extends ProjectAction {
     public void updateProjectAction(ActionEvent e) {
 //        e.getPresentation().setVisible(true);
         boolean hasDirtyEditor = false;
-        for (EditorPartPresenter editor : editorAgent.getOpenedEditors().values()) {
+        for (EditorPartPresenter editor : editorAgent.getOpenedEditors()) {
             if(editor instanceof EditorWithAutoSave) {
                 if (((EditorWithAutoSave)editor).isAutoSaveEnabled()) {
                     continue;

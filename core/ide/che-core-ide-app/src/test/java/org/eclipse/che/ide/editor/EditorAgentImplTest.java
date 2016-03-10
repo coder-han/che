@@ -129,8 +129,8 @@ public class EditorAgentImplTest {
         verify(editorInput).setFile(newFileNode);
         verify(editor).onFileChanged();
 
-        assertThat(editorAgent.getOpenedEditors().containsKey(TEXT + 1), is(true));
-        assertThat(editorAgent.getOpenedEditors().get(TEXT + 1), is(editor));
+        assertThat(editorAgent.getOpenedEditors().contains(appContext), is(true));
+        assertThat(editorAgent.getOpenedEditors().get(editorAgent.getOpenedEditors().indexOf(TEXT + 1)), is(editor));
     }
 
     @Test
